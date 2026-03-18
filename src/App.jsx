@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import {
   GraduationCap, Menu, X, CheckCircle, Send,
-  Phone, Clock, Users, Award, Gift, Loader2, Lock
+  Phone, Clock, Users, Award, Gift, Loader2, Lock,
+  Briefcase, User, BookOpen, FileText, MessageCircle
 } from 'lucide-react'
 
 // ── Data ─────────────────────────────────────────────────────────────────────
@@ -36,11 +37,12 @@ const FEATURES = [
 function Navbar() {
   const [open, setOpen] = useState(false)
   const links = [
-    { href: '#kurslar',     label: 'Kurslar' },
-    { href: '#narxlar',     label: 'Narxlar' },
+    { href: '#kurslar',      label: 'Kurslar' },
+    { href: '#narxlar',      label: 'Narxlar' },
     { href: '#oqituvchilar', label: "O'qituvchilar" },
-    { href: '#ariza',       label: 'Ariza' },
-    { href: '#kontakt',     label: 'Kontakt' },
+    { href: '#ariza',        label: 'Ariza' },
+    { href: '#vakansiya',    label: 'Vakansiya' },
+    { href: '#kontakt',      label: 'Kontakt' },
   ]
   return (
     <nav className="navbar">
@@ -412,6 +414,123 @@ function ApplicationForm() {
 
 // ── Contact ──────────────────────────────────────────────────────────────────
 
+// ── Vacancy Form ─────────────────────────────────────────────────────────────
+
+const MA_LUMOT_DARAJALARI = ["Bakalavr", "Magistr", "Oliy ma'lumot (tugallanmagan)", "O'rta maxsus"]
+const SERTIFIKAT_DARAJALARI = ["1-toifa", "2-toifa", "Oliy toifa", "Toifasiz"]
+
+function VacancyForm() {
+  const [form, setForm] = useState({ fish: '', fan: '', malumot: '', sertifikat: '', telefon: '', telegram: '' })
+  const [loading, setLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [errors, setErrors] = useState({})
+
+  const validate = () => {
+    const e = {}
+    if (!form.fish.trim())     e.fish     = "FISh ni kiriting"
+    if (!form.fan.trim())      e.fan      = "Fanini kiriting"
+    if (!form.malumot)         e.malumot  = "Ma'lumot darajasini tanlang"
+    if (!form.telefon.trim())  e.telefon  = "Telefon raqamini kiriting"
+    if (!form.telegram.trim()) e.telegram = "Telegram username kiriting"
+    return e
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setErrors({})
+    setLoading(true)
+    await new Promise(r => setTimeout(r, 1200))
+    console.log('Vakansiya:', form)
+    setLoading(false)
+    setSubmitted(true)
+  }
+
+  const upd = (f) => (e) => setForm(p => ({ ...p, [f]: e.target.value }))
+
+  if (submitted) return (
+    <section id="vakansiya" className="section" style={{ background: 'var(--bg-soft)' }}>
+      <div className="container">
+        <div className="success-box">
+          <CheckCircle size={56} color="#10B981" />
+          <h2>Ariza qabul qilindi!</h2>
+          <p>Tez orada Telegram orqali bog'lanamiz.</p>
+          <button className="btn btn-secondary" onClick={() => { setSubmitted(false); setForm({ fish:'',fan:'',malumot:'',sertifikat:'',telefon:'',telegram:'' }) }}>
+            Yana ariza berish
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+
+  return (
+    <section id="vakansiya" className="section" style={{ background: 'var(--bg-soft)' }}>
+      <div className="container">
+        <div className="section-header">
+          <div className="badge">Vakansiya</div>
+          <h2 className="section-title">O'qituvchi bo'lish uchun ariza</h2>
+          <p className="section-desc">
+            Tajribali o'qituvchilarni qabul qilamiz — asosiy va yordamchi o'qituvchi sifatida
+          </p>
+        </div>
+        <form className="app-form" onSubmit={handleSubmit} noValidate>
+
+          <div className="form-group">
+            <label className="form-label"><User size={14} /> FISh *</label>
+            <input className={`form-input${errors.fish ? ' err' : ''}`} placeholder="Familiya Ism Sharif" value={form.fish} onChange={upd('fish')} />
+            {errors.fish && <span className="form-error">{errors.fish}</span>}
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label className="form-label"><BookOpen size={14} /> Dars beradigan fani *</label>
+              <input className={`form-input${errors.fan ? ' err' : ''}`} placeholder="Masalan: Matematika" value={form.fan} onChange={upd('fan')} />
+              {errors.fan && <span className="form-error">{errors.fan}</span>}
+            </div>
+            <div className="form-group">
+              <label className="form-label"><FileText size={14} /> Ma'lumoti *</label>
+              <select className={`form-select${errors.malumot ? ' err' : ''}`} value={form.malumot} onChange={upd('malumot')}>
+                <option value="">Tanlang</option>
+                {MA_LUMOT_DARAJALARI.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+              {errors.malumot && <span className="form-error">{errors.malumot}</span>}
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label className="form-label"><Briefcase size={14} /> Sertifikat darajasi</label>
+              <select className="form-select" value={form.sertifikat} onChange={upd('sertifikat')}>
+                <option value="">Tanlang (ixtiyoriy)</option>
+                {SERTIFIKAT_DARAJALARI.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+            </div>
+            <div className="form-group">
+              <label className="form-label"><Phone size={14} /> Telefon raqam *</label>
+              <input className={`form-input${errors.telefon ? ' err' : ''}`} type="tel" placeholder="+998 90 123 45 67" value={form.telefon} onChange={upd('telefon')} />
+              {errors.telefon && <span className="form-error">{errors.telefon}</span>}
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label className="form-label"><MessageCircle size={14} /> Telegram *</label>
+            <input className={`form-input${errors.telegram ? ' err' : ''}`} placeholder="@username" value={form.telegram} onChange={upd('telegram')} />
+            {errors.telegram && <span className="form-error">{errors.telegram}</span>}
+          </div>
+
+          <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
+            {loading ? <><Loader2 size={18} className="spin" /> Yuborilmoqda...</> : <><Send size={16} /> Ariza yuborish</>}
+          </button>
+          <p className="form-note"><Lock size={12} /> Ma'lumotlaringiz xavfsiz saqlangan</p>
+        </form>
+      </div>
+    </section>
+  )
+}
+
+// ── Contact ──────────────────────────────────────────────────────────────────
+
 function Contact() {
   return (
     <section id="kontakt" className="section">
@@ -473,6 +592,7 @@ export default function App() {
         <Features />
         <Teachers />
         <ApplicationForm />
+        <VacancyForm />
         <Contact />
       </main>
       <Footer />
