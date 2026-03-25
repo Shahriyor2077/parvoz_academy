@@ -289,20 +289,23 @@ function PricingPreview({ tr }) {
           <h2>{tr.pricing.title}</h2>
           <p>{tr.pricing.subtitle}</p>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div className="pricing-preview-grid">
+          {/* Milliy Sertifikat */}
           <div className="price-card">
-            <div className="price-popular">{tr.pricing.popular}</div>
+            <div className="price-badge" style={{ background: 'linear-gradient(135deg, #6C3CE1, #4B2AB0)' }}>
+              {tr.pricing.certTitle}
+            </div>
             <div className="price-amount">
-              <span className="price-num">{tr.pricing.price}</span>
+              <span className="price-num">{tr.pricing.priceCert}</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <span className="price-currency">{tr.pricing.currency}</span>
                 <span className="price-period">{tr.pricing.month}</span>
               </div>
             </div>
             <ul className="price-features">
-              {tr.pricing.features.map((f, i) => (
+              {tr.pricing.features.slice(0, 6).map((f, i) => (
                 <li key={i} className="price-feature">
-                  <CheckCircle size={17} color="var(--primary)" strokeWidth={2.5} />
+                  <CheckCircle size={17} color="#6C3CE1" strokeWidth={2.5} />
                   <span>{f}</span>
                 </li>
               ))}
@@ -310,20 +313,50 @@ function PricingPreview({ tr }) {
             <Link to="/apply" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
               {tr.pricing.cta} <ArrowRight size={16} />
             </Link>
-            <p className="price-note">{tr.pricing.note}</p>
           </div>
+
+          {/* Attestatsiya */}
+          <div className="price-card">
+            <div className="price-badge" style={{ background: 'linear-gradient(135deg, #4ECDC4, #2aada4)' }}>
+              {tr.pricing.attestTitle}
+            </div>
+            <div className="price-amount">
+              <span className="price-num">{tr.pricing.priceAttest}</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <span className="price-currency">{tr.pricing.currency}</span>
+                <span className="price-period">{tr.pricing.month}</span>
+              </div>
+            </div>
+            <ul className="price-features">
+              {tr.pricing.features.slice(0, 6).map((f, i) => (
+                <li key={i} className="price-feature">
+                  <CheckCircle size={17} color="#4ECDC4" strokeWidth={2.5} />
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <Link to="/apply" className="btn" style={{ width: '100%', justifyContent: 'center', background: 'linear-gradient(135deg, #4ECDC4, #2aada4)', color: 'white', boxShadow: '0 4px 20px rgba(78,205,196,0.4)' }}>
+              {tr.pricing.cta} <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 32 }}>
+          <p className="price-note">{tr.pricing.note}</p>
         </div>
       </div>
       <style>{`
-        .price-card { background: white; border: 2px solid var(--primary); border-radius: var(--radius-xl); padding: 40px; max-width: 420px; width: 100%; position: relative; box-shadow: var(--shadow-xl); }
-        .price-popular { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color: white; padding: 5px 20px; border-radius: var(--radius-full); font-size: 13px; font-weight: 700; white-space: nowrap; }
+        .pricing-preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+        .price-card { background: white; border: 2px solid var(--border); border-radius: var(--radius-xl); padding: 40px; position: relative; box-shadow: var(--shadow-lg); transition: var(--transition); }
+        .price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
+        .price-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); color: white; padding: 5px 20px; border-radius: var(--radius-full); font-size: 13px; font-weight: 700; white-space: nowrap; }
         .price-amount { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; margin-top: 20px; }
         .price-num { font-size: 50px; font-weight: 800; color: var(--text); font-family: var(--font-heading); line-height: 1; letter-spacing: -2px; }
         .price-currency { font-size: 14px; color: var(--text-secondary); font-weight: 600; }
         .price-period { font-size: 13px; color: var(--text-muted); }
         .price-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
         .price-feature { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text); }
-        .price-note { margin-top: 14px; font-size: 12px; color: var(--text-muted); text-align: center; }
+        .price-note { margin-top: 14px; font-size: 13px; color: var(--text-muted); text-align: center; }
+        @media (max-width: 768px) { .pricing-preview-grid { grid-template-columns: 1fr; max-width: 420px; } }
       `}</style>
     </section>
   )
@@ -337,7 +370,7 @@ function CTABanner({ tr }) {
         <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 17, marginBottom: 36, maxWidth: 480, margin: '0 auto 36px' }}>{tr.cta.subtitle}</p>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/apply" className="btn btn-white btn-lg"><Zap size={18} /> {tr.cta.btn1}</Link>
-          <a href="https://t.me/parvozacademy" className="btn btn-lg" target="_blank" rel="noopener noreferrer"
+          <a href="https://t.me/PARVOZ_Online_Academy" className="btn btn-lg" target="_blank" rel="noopener noreferrer"
             style={{ background: 'rgba(255,255,255,0.12)', color: 'white', border: '1.5px solid rgba(255,255,255,0.3)', borderRadius: 'var(--radius-full)' }}>
             <Send size={16} /> {tr.cta.btn2}
           </a>

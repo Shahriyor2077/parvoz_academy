@@ -3,13 +3,13 @@ import { CheckCircle, Send, User, Phone, BookOpen, FileText, MapPin, Briefcase, 
 import { useLang } from '../context/LangContext'
 import { t } from '../data/translations'
 
-const REGIONS = ["Toshkent shahri","Toshkent viloyati","Samarqand","Buxoro","Farg'ona","Andijon","Namangan","Qashqadaryo","Surxondaryo","Jizzax","Sirdaryo","Xorazm","Navoiy","Qoraqalpog'iston"]
-const REGIONS_RU = ["г. Ташкент","Ташкентская обл.","Самарканд","Бухара","Фергана","Андижан","Наманган","Кашкадарья","Сурхандарья","Джиззак","Сырдарья","Хорезм","Навои","Каракалпакстан"]
+const REGIONS = ["Toshkent shahri", "Toshkent viloyati", "Samarqand", "Buxoro", "Farg'ona", "Andijon", "Namangan", "Qashqadaryo", "Surxondaryo", "Jizzax", "Sirdaryo", "Xorazm", "Navoiy", "Qoraqalpog'iston"]
+const REGIONS_RU = ["г. Ташкент", "Ташкентская обл.", "Самарканд", "Бухара", "Фергана", "Андижан", "Наманган", "Кашкадарья", "Сурхандарья", "Джиззак", "Сырдарья", "Хорезм", "Навои", "Каракалпакстан"]
 
 export default function ApplicationPage() {
   const { lang } = useLang()
   const tr = t[lang].form
-  const [form, setForm] = useState({ firstName:'', lastName:'', subject:'', examType:'', region:'', workplace:'', phone1:'', phone2:'' })
+  const [form, setForm] = useState({ firstName: '', lastName: '', subject: '', examType: '', region: '', workplace: '', phone1: '', phone2: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState({})
@@ -58,10 +58,10 @@ export default function ApplicationPage() {
             ))}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <a href="https://t.me/parvozacademy" className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer" style={{ justifyContent: 'center' }}>
+            <a href="https://t.me/PARVOZ_Online_Academy" className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer" style={{ justifyContent: 'center' }}>
               <Send size={18} /> Telegram
             </a>
-            <button className="btn btn-secondary" onClick={() => { setSubmitted(false); setForm({ firstName:'',lastName:'',subject:'',examType:'',region:'',workplace:'',phone1:'',phone2:'' }) }}>
+            <button className="btn btn-secondary" onClick={() => { setSubmitted(false); setForm({ firstName: '', lastName: '', subject: '', examType: '', region: '', workplace: '', phone1: '', phone2: '' }) }}>
               {lang === 'uz' ? 'Yana ariza berish' : 'Отправить ещё одну заявку'}
             </button>
           </div>

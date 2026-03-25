@@ -7,7 +7,7 @@ export default function ContactPage() {
   const tr = t[lang].contact
 
   const contactItems = [
-    { Icon: Send, label: 'Telegram', value: '@parvozacademy', href: 'https://t.me/parvozacademy', color: '#26A5E4', desc: lang === 'uz' ? '24/7 javob beramiz' : 'Отвечаем 24/7' },
+    { Icon: Send, label: 'Telegram', value: '@PARVOZ_Online_Academy', href: 'https://t.me/PARVOZ_Online_Academy', color: '#26A5E4', desc: lang === 'uz' ? '24/7 javob beramiz' : 'Отвечаем 24/7' },
     { Icon: AtSign, label: 'AtSign', value: '@parvoz.academy', href: 'https://instagram.com/parvoz.academy', color: '#E1306C', desc: lang === 'uz' ? 'Yangiliklar va natijalar' : 'Новости и результаты' },
     { Icon: Phone, label: tr.phone, value: '+998 90 123 45 67', href: 'tel:+998901234567', color: '#10B981', desc: lang === 'uz' ? 'Dush-Shan: 8:00-22:00' : 'Пн-Сб: 8:00-22:00' },
     { Icon: Phone, label: tr.phone + ' 2', value: '+998 91 234 56 78', href: 'tel:+998912345678', color: '#10B981', desc: lang === 'uz' ? "Qo'shimcha raqam" : 'Доп. номер' },

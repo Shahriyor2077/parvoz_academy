@@ -12,7 +12,7 @@ export default function PricingPage() {
       title: 'Nima uchun PARVOZ?',
       headers: ['', 'Oddiy repetitor', 'Akademiyalar', 'PARVOZ'],
       rows: [
-        ['Narx', "400,000–800,000 so'm/oy", "300,000–600,000 so'm/oy", "200,000 so'm/oy"],
+        ['Narx', "400,000–800,000 so'm/oy", "300,000–600,000 so'm/oy", "100,000–200,000 so'm/oy"],
         ['Kafolat', '❌', '❌', '✅ 100%'],
         ['Shaxsiy mentor', '✅ (1 fan)', '❌', '✅ (barcha fanlar)'],
         ['24/7 yordam', '❌', '❌', '✅'],
@@ -26,7 +26,7 @@ export default function PricingPage() {
       title: 'Почему PARVOZ?',
       headers: ['', 'Частный репетитор', 'Академии', 'PARVOZ'],
       rows: [
-        ['Цена', '400 000–800 000 сум/мес', '300 000–600 000 сум/мес', '200 000 сум/мес'],
+        ['Цена', '400 000–800 000 сум/мес', '300 000–600 000 сум/мес', '100 000–200 000 сум/мес'],
         ['Гарантия', '❌', '❌', '✅ 100%'],
         ['Личный ментор', '✅ (1 предмет)', '❌', '✅ (все предметы)'],
         ['Поддержка 24/7', '❌', '❌', '✅'],
@@ -65,24 +65,25 @@ export default function PricingPage() {
         </div>
       </div>
 
-      {/* Main Pricing Card */}
+      {/* Main Pricing Cards */}
       <section className="section" style={{ background: 'var(--bg-soft)' }}>
         <div className="container">
           <div className="pricing-main">
+            {/* Milliy Sertifikat */}
             <div className="pricing-card">
-              <div className="pricing-popular">
-                <Flame size={14} /> {tr.popular}
+              <div className="pricing-badge" style={{ background: 'linear-gradient(135deg, #6C3CE1, #4B2AB0)' }}>
+                {tr.certTitle}
               </div>
               <div className="pricing-amount">
                 <span className="pricing-currency">{tr.currency}</span>
-                <span className="pricing-num">{tr.price}</span>
+                <span className="pricing-num">{tr.priceCert}</span>
                 <span className="pricing-period">{tr.month}</span>
               </div>
 
               <ul className="pricing-features">
                 {tr.features.map((f, i) => (
                   <li key={i} className="pricing-feature">
-                    <CheckCircle size={18} color="var(--primary)" strokeWidth={2.5} style={{ flexShrink: 0 }} />
+                    <CheckCircle size={18} color="#6C3CE1" strokeWidth={2.5} style={{ flexShrink: 0 }} />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -98,94 +99,165 @@ export default function PricingPage() {
               </div>
             </div>
 
-            <div className="pricing-side">
-              {/* Payment methods */}
-              <div className="pricing-info-card">
-                <h3 style={{ marginBottom: 20 }}>{paymentLabel}</h3>
-                <div className="payment-methods">
-                  {paymentMethods.map((p, i) => (
-                    <div key={i} className="payment-item">
-                      <div className="payment-icon" style={{ background: `${p.color}15`, color: p.color }}>
-                        <p.Icon size={18} />
-                      </div>
-                      <span className="payment-name">{p.name}</span>
-                    </div>
-                  ))}
-                </div>
+            {/* Attestatsiya */}
+            <div className="pricing-card">
+              <div className="pricing-badge" style={{ background: 'linear-gradient(135deg, #4ECDC4, #2aada4)' }}>
+                {tr.attestTitle}
+              </div>
+              <div className="pricing-amount">
+                <span className="pricing-currency">{tr.currency}</span>
+                <span className="pricing-num">{tr.priceAttest}</span>
+                <span className="pricing-period">{tr.month}</span>
               </div>
 
-              {/* Scholarship */}
-              <div className="pricing-info-card scholarship-card">
-                <GraduationCap size={36} color="white" style={{ marginBottom: 12 }} />
-                <h3 style={{ marginBottom: 10, color: 'white' }}>{scholarTitle}</h3>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, marginBottom: 20 }}>{scholarDesc}</p>
-                <Link to="/apply" className="btn btn-white btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
-                  {scholarBtn}
-                </Link>
-              </div>
+              <ul className="pricing-features">
+                {tr.features.map((f, i) => (
+                  <li key={i} className="pricing-feature">
+                    <CheckCircle size={18} color="#4ECDC4" strokeWidth={2.5} style={{ flexShrink: 0 }} />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
 
-              {/* Referral */}
-              <div className="pricing-info-card">
-                <Users size={28} color="var(--primary)" style={{ marginBottom: 12 }} />
-                <h3 style={{ marginBottom: 10 }}>
-                  {lang === 'uz' ? "Do'st taklif et — chegirma ol!" : 'Пригласи друга — получи скидку!'}
-                </h3>
-                <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                  {lang === 'uz'
-                    ? "Har bir do'st taklifi uchun 20,000 so'm bonus oling. Do'stingiz ham chegirma oladi!"
-                    : 'За каждого приглашённого друга получайте бонус 20 000 сум. Ваш друг тоже получит скидку!'}
-                </p>
+              <Link to="/apply" className="btn" style={{ width: '100%', justifyContent: 'center', fontSize: 17, padding: '16px', gap: 8, background: 'linear-gradient(135deg, #4ECDC4, #2aada4)', color: 'white', boxShadow: '0 4px 20px rgba(78,205,196,0.4)' }}>
+                <Sparkles size={18} /> {tr.cta}
+              </Link>
+
+              <div className="pricing-note-box">
+                <Shield size={16} color="#4ECDC4" style={{ flexShrink: 0, marginTop: 2 }} />
+                <p>{tr.note}</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Comparison Table */}
-      <section className="section" style={{ background: 'white' }}>
-        <div className="container">
-          <div className="section-header">
-            <div className="badge">{lang === 'uz' ? 'Taqqoslash' : 'Сравнение'}</div>
-            <h2>{comparison.title}</h2>
-          </div>
-          <div className="comparison-table-wrap">
-            <table className="comparison-table">
-              <thead>
-                <tr>
-                  {comparison.headers.map((h, i) => (
-                    <th key={i} className={i === 3 ? 'th--highlight' : ''}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.rows.map((row, i) => (
-                  <tr key={i}>
-                    {row.map((cell, j) => (
-                      <td key={j} className={`${j === 0 ? 'td--label' : ''} ${j === 3 ? 'td--highlight' : ''}`}>
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
+          {/* Additional Info */}
+          <div className="pricing-side-grid">
+            {/* Payment methods */}
+            <div className="pricing-info-card">
+              <h3 style={{ marginBottom: 20 }}>{paymentLabel}</h3>
+              <div className="payment-methods">
+                {paymentMethods.map((p, i) => (
+                  <div key={i} className="payment-item">
+                    <div className="payment-icon" style={{ background: `${p.color}15`, color: p.color }}>
+                      <p.Icon size={18} />
+                    </div>
+                    <span className="payment-name">{p.name}</span>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+              </div>
+            </div>
+
+            {/* Scholarship */}
+            <div className="pricing-info-card scholarship-card">
+              <GraduationCap size={36} color="white" style={{ marginBottom: 12 }} />
+              <h3 style={{ marginBottom: 10, color: 'white' }}>{scholarTitle}</h3>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, marginBottom: 20 }}>{scholarDesc}</p>
+              <Link to="/apply" className="btn btn-white btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
+                {scholarBtn}
+              </Link>
+            </div>
+
+            {/* Referral */}
+            <div className="pricing-info-card">
+              <Users size={28} color="var(--primary)" style={{ marginBottom: 12 }} />
+              <h3 style={{ marginBottom: 10 }}>
+                {lang === 'uz' ? "Do'st taklif et — chegirma ol!" : 'Пригласи друга — получи скидку!'}
+              </h3>
+              <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                {lang === 'uz'
+                  ? "Har bir do'st taklifi uchun 20,000 so'm bonus oling. Do'stingiz ham chegirma oladi!"
+                  : 'За каждого приглашённого друга получайте бонус 20 000 сум. Ваш друг тоже получит скидку!'}
+              </p>
+            </div>
+          </div>
+          {/* Payment methods */}
+          <div className="pricing-info-card">
+            <h3 style={{ marginBottom: 20 }}>{paymentLabel}</h3>
+            <div className="payment-methods">
+              {paymentMethods.map((p, i) => (
+                <div key={i} className="payment-item">
+                  <div className="payment-icon" style={{ background: `${p.color}15`, color: p.color }}>
+                    <p.Icon size={18} />
+                  </div>
+                  <span className="payment-name">{p.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Scholarship */}
+          <div className="pricing-info-card scholarship-card">
+            <GraduationCap size={36} color="white" style={{ marginBottom: 12 }} />
+            <h3 style={{ marginBottom: 10, color: 'white' }}>{scholarTitle}</h3>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, marginBottom: 20 }}>{scholarDesc}</p>
+            <Link to="/apply" className="btn btn-white btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
+              {scholarBtn}
+            </Link>
+          </div>
+
+          {/* Referral */}
+          <div className="pricing-info-card">
+            <Users size={28} color="var(--primary)" style={{ marginBottom: 12 }} />
+            <h3 style={{ marginBottom: 10 }}>
+              {lang === 'uz' ? "Do'st taklif et — chegirma ol!" : 'Пригласи друга — получи скидку!'}
+            </h3>
+            <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+              {lang === 'uz'
+                ? "Har bir do'st taklifi uchun 20,000 so'm bonus oling. Do'stingiz ham chegirma oladi!"
+                : 'За каждого приглашённого друга получайте бонус 20 000 сум. Ваш друг тоже получит скидку!'}
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+    </section >
 
-      {/* FAQ link */}
-      <section className="section-sm" style={{ background: 'var(--bg-soft)', textAlign: 'center' }}>
-        <div className="container">
-          <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>
-            {lang === 'uz' ? "Qo'shimcha savollar bormi?" : 'Остались вопросы?'}
-          </p>
-          <Link to="/faq" className="btn btn-secondary">
-            {faqLabel} →
-          </Link>
-        </div>
-      </section>
+    {/* Comparison Table */ }
+    < section className = "section" style = {{ background: 'white' }
+}>
+  <div className="container">
+    <div className="section-header">
+      <div className="badge">{lang === 'uz' ? 'Taqqoslash' : 'Сравнение'}</div>
+      <h2>{comparison.title}</h2>
+    </div>
+    <div className="comparison-table-wrap">
+      <table className="comparison-table">
+        <thead>
+          <tr>
+            {comparison.headers.map((h, i) => (
+              <th key={i} className={i === 3 ? 'th--highlight' : ''}>{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {comparison.rows.map((row, i) => (
+            <tr key={i}>
+              {row.map((cell, j) => (
+                <td key={j} className={`${j === 0 ? 'td--label' : ''} ${j === 3 ? 'td--highlight' : ''}`}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </section >
 
-      <style>{`
+  {/* FAQ link */ }
+  < section className = "section-sm" style = {{ background: 'var(--bg-soft)', textAlign: 'center' }}>
+    <div className="container">
+      <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>
+        {lang === 'uz' ? "Qo'shimcha savollar bormi?" : 'Остались вопросы?'}
+      </p>
+      <Link to="/faq" className="btn btn-secondary">
+        {faqLabel} →
+      </Link>
+    </div>
+      </section >
+
+  <style>{`
         .page-header {
           background: linear-gradient(135deg, var(--primary), var(--primary-dark));
           padding: 64px 0 48px;
@@ -195,23 +267,27 @@ export default function PricingPage() {
         .pricing-main {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 32px;
-          align-items: flex-start;
+          gap: 24px;
+          margin-bottom: 32px;
         }
         .pricing-card {
           background: white;
-          border: 2px solid var(--primary);
+          border: 2px solid var(--border);
           border-radius: var(--radius-xl);
           padding: 40px;
           position: relative;
+          box-shadow: var(--shadow-lg);
+          transition: var(--transition);
+        }
+        .pricing-card:hover {
+          transform: translateY(-4px);
           box-shadow: var(--shadow-xl);
         }
-        .pricing-popular {
+        .pricing-badge {
           position: absolute;
           top: -14px;
           left: 50%;
           transform: translateX(-50%);
-          background: linear-gradient(135deg, var(--primary), var(--primary-dark));
           color: white;
           padding: 6px 20px;
           border-radius: var(--radius-full);
@@ -241,7 +317,13 @@ export default function PricingPage() {
           color: var(--text-secondary);
           line-height: 1.6;
         }
-        .pricing-side { display: flex; flex-direction: column; gap: 20px; }
+        .pricing-side-grid { 
+          display: grid; 
+          grid-template-columns: repeat(3, 1fr); 
+          gap: 20px; 
+          max-width: 1000px;
+          margin: 0 auto;
+        }
         .pricing-info-card {
           background: white;
           border: 1px solid var(--border);
@@ -282,8 +364,12 @@ export default function PricingPage() {
         .td--label { font-weight: 600; color: var(--text); }
         @media (max-width: 900px) {
           .pricing-main { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+          .pricing-side-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+          .pricing-side-grid { grid-template-columns: 1fr; }
         }
       `}</style>
-    </main>
+    </main >
   )
 }

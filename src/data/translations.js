@@ -85,7 +85,7 @@ export const t = {
         {
           icon: "💰",
           title: "Qulay Narx",
-          desc: "Oyiga atigi 200,000 so'm. Barcha fanlar uchun bir narx. Ota-onalar uchun qulay to'lov."
+          desc: "Milliy sertifikat 200,000 so'm, Attestatsiya 100,000 so'm. Barcha fanlar uchun. Ota-onalar uchun qulay to'lov."
         },
       ]
     },
@@ -163,11 +163,14 @@ export const t = {
     pricing: {
       badge: "Narxlar",
       title: "Oddiy va shaffof narx",
-      subtitle: "Bir narx — barcha imkoniyatlar. Hech qanday yashirin to'lov yo'q.",
+      subtitle: "Ikki xil imtihon turi uchun qulay narxlar. Hech qanday yashirin to'lov yo'q.",
       month: "/ oy",
-      price: "200,000",
+      priceCert: "200,000",
+      priceAttest: "100,000",
       currency: "so'm",
       popular: "Eng mashhur",
+      certTitle: "Milliy Sertifikat",
+      attestTitle: "Attestatsiya",
       features: [
         "Barcha fanlar bo'yicha darslar",
         "Shaxsiy repetitor (24/7)",
@@ -243,9 +246,9 @@ export const t = {
       selectExam: "Imtihon turini tanlang",
       subjectsList: [
         "O'zbek tili", "Matematika", "Kimyo", "Geografiya",
-        "Rus tili", "Ingliz tili", "Biologiya", "Fizika",
+        "Rus tili", "Ingliz tili", "Turk tili", "Biologiya", "Fizika",
         "Tarix", "Informatika", "Musiqa", "Jismoniy tarbiya",
-        "Huquq", "Texnologiya", "Boshlang'ich ta'lim", "Boshqa"
+        "Huquq", "Texnologiya", "Boshlang'ich ta'lim", "Psixologiya", "Menejerlik", "Boshqa"
       ],
     },
 
@@ -475,11 +478,14 @@ export const t = {
     pricing: {
       badge: "Цены",
       title: "Простая и прозрачная цена",
-      subtitle: "Одна цена — все возможности. Никаких скрытых платежей.",
+      subtitle: "Доступные цены для двух типов экзаменов. Никаких скрытых платежей.",
       month: "/ месяц",
-      price: "200 000",
+      priceCert: "200 000",
+      priceAttest: "100 000",
       currency: "сум",
       popular: "Самый популярный",
+      certTitle: "Национальный сертификат",
+      attestTitle: "Аттестация",
       features: [
         "Уроки по всем предметам",
         "Личный репетитор (24/7)",
@@ -552,9 +558,9 @@ export const t = {
       selectExam: "Выберите тип экзамена",
       subjectsList: [
         "Узбекский язык", "Математика", "Химия", "География",
-        "Русский язык", "Английский язык", "Биология", "Физика",
+        "Русский язык", "Английский язык", "Турецкий язык", "Биология", "Физика",
         "История", "Информатика", "Музыка", "Физкультура",
-        "Право", "Технология", "Начальное образование", "Другое"
+        "Право", "Технология", "Начальное образование", "Психология", "Менеджмент", "Другое"
       ],
     },
 

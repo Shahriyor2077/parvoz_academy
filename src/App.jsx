@@ -10,14 +10,15 @@ import VacancyPage from './pages/VacancyPage.jsx'
 
 const SERTIFIKAT_FANLAR = [
   "Ona tili", "Matematika", "Kimyo", "Geografiya", "Rus tili",
-  "Ingliz tili", "Biologiya", "Fizika", "Tarix", "Boshqa fanlar",
+  "Ingliz tili", "Turk tili", "Biologiya", "Fizika", "Tarix",
+  "Menejerlik", "Boshqa fanlar",
 ]
 
 const ATTESTATSIYA_FANLAR = [
   "Ona tili", "Matematika", "Informatika", "Kimyo", "Geografiya",
   "Rus tili", "Ingliz tili", "Biologiya", "Fizika", "Musiqa",
   "Jismoniy tarbiya", "Huquq", "Texnologiya", "Tarix",
-  "Boshlang'ich ta'lim", "Boshqa fanlar",
+  "Boshlang'ich ta'lim", "Psixologiya", "Boshqa fanlar",
 ]
 
 const VILOYATLAR = [
@@ -27,10 +28,10 @@ const VILOYATLAR = [
 ]
 
 const FEATURES = [
-  { Icon: Award,  title: "100% Natija kafolati",           desc: "Natija bo'lmasa — to'liq pul qaytariladi" },
-  { Icon: Users,  title: "Alohida yordamchi o'qituvchi",   desc: "Har bir o'quvchi bilan shaxsiy yordamchi biriktiriladi" },
-  { Icon: Clock,  title: "24/7 Yordam",                    desc: "Istalgan vaqt savollaringizga javob beramiz" },
-  { Icon: Gift,   title: "Qimmatbaho sovg'alar",           desc: "Yuqori ball to'plaganlarga esdalik sovg'alar taqdim etiladi" },
+  { Icon: Award, title: "100% Natija kafolati", desc: "Natija bo'lmasa — to'liq pul qaytariladi" },
+  { Icon: Users, title: "Alohida yordamchi o'qituvchi", desc: "Har bir o'quvchi bilan shaxsiy yordamchi biriktiriladi" },
+  { Icon: Clock, title: "24/7 Yordam", desc: "Istalgan vaqt savollaringizga javob beramiz" },
+  { Icon: Gift, title: "Qimmatbaho sovg'alar", desc: "Yuqori ball to'plaganlarga esdalik sovg'alar taqdim etiladi" },
 ]
 
 // ── Navbar ───────────────────────────────────────────────────────────────────
@@ -38,12 +39,12 @@ const FEATURES = [
 function Navbar() {
   const [open, setOpen] = useState(false)
   const links = [
-    { href: '#kurslar',      label: 'Kurslar' },
-    { href: '#narxlar',      label: 'Narxlar' },
+    { href: '#kurslar', label: 'Kurslar' },
+    { href: '#narxlar', label: 'Narxlar' },
     { href: '#oqituvchilar', label: "O'qituvchilar" },
-    { href: '#ariza',        label: 'Ariza' },
-    { href: '/vakansiya',    label: 'Vakansiya', external: true },
-    { href: '#kontakt',      label: 'Kontakt' },
+    { href: '#ariza', label: 'Ariza' },
+    { href: '/vakansiya', label: 'Vakansiya', external: true },
+    { href: '#kontakt', label: 'Kontakt' },
   ]
   return (
     <nav className="navbar">
@@ -89,8 +90,8 @@ function Hero() {
           <span className="gradient-text">kafolatli tayyorlov</span>
         </h1>
         <p className="hero__desc">
-          Oyiga <strong>200 000 so'm</strong> — barcha fanlar bo'yicha milliy sertifikat
-          va attestatsiya imtihonlariga professional tayyorlov
+          <strong>Milliy sertifikat 200 000 so'm</strong>, <strong>Attestatsiya 100 000 so'm</strong> —
+          barcha fanlar bo'yicha professional tayyorlov
         </p>
         <div className="hero__actions">
           <a href="#ariza" className="btn btn-primary btn-lg">Ariza qoldirish</a>
@@ -106,8 +107,8 @@ function Hero() {
             <span className="hero__stat-label">Yordam</span>
           </div>
           <div className="hero__stat">
-            <span className="hero__stat-num">200k</span>
-            <span className="hero__stat-label">So'mdan / oy</span>
+            <span className="hero__stat-num">100k-200k</span>
+            <span className="hero__stat-label">So'm / oy</span>
           </div>
         </div>
       </div>
@@ -132,7 +133,7 @@ function Courses() {
           <div className="course-card">
             <div className="course-card__header" style={{ background: 'linear-gradient(135deg,#6C3CE1,#4B2AB0)' }}>
               <div className="course-card__title">Milliy Sertifikat</div>
-              <p className="course-card__sub">DTM sertifikatlashtirish imtihoni</p>
+              <p className="course-card__sub">Barcha fanlar bo'yicha tayyorgarlik</p>
             </div>
             <ul className="fan-list">
               {SERTIFIKAT_FANLAR.map(f => (
@@ -171,8 +172,8 @@ function Features() {
       <div className="container">
         <div className="section-header">
           <div className="badge">Narxlar va imkoniyatlar</div>
-          <h2 className="section-title">Oyiga 200 000 so'm</h2>
-          <p className="section-desc">Barcha fanlar uchun bir narx — kafolatli natija</p>
+          <h2 className="section-title">100 000 — 200 000 so'm / oy</h2>
+          <p className="section-desc">Milliy sertifikat 200 000 so'm, Attestatsiya 100 000 so'm — kafolatli natija</p>
         </div>
         <div className="features__grid">
           {FEATURES.map(({ Icon, title, desc }) => (
@@ -222,7 +223,7 @@ function Teachers() {
         </div>
         <div style={{ textAlign: 'center', marginTop: 32 }}>
           <a
-            href="https://t.me/parvozacademy"
+            href="https://t.me/PARVOZ_Online_Academy"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
@@ -239,23 +240,23 @@ function Teachers() {
 
 function ApplicationForm() {
   const [imtihon, setImtihon] = useState('')
-  const [form, setForm] = useState({ ism: '', familiya: '', fan: '', viloyat: '', telefon: '' })
+  const [form, setForm] = useState({ ism: '', familiya: '', fan: '', telegram: '', telefon: '' })
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState({})
 
   const fanlar = imtihon === 'sertifikat' ? SERTIFIKAT_FANLAR
-               : imtihon === 'attestatsiya' ? ATTESTATSIYA_FANLAR
-               : []
+    : imtihon === 'attestatsiya' ? ATTESTATSIYA_FANLAR
+      : []
 
   const validate = () => {
     const e = {}
-    if (!form.ism.trim())      e.ism      = "Ismingizni kiriting"
+    if (!form.ism.trim()) e.ism = "Ismingizni kiriting"
     if (!form.familiya.trim()) e.familiya = "Familiyangizni kiriting"
-    if (!imtihon)              e.imtihon  = "Imtihon turini tanlang"
-    if (!form.fan)             e.fan      = "Fanni tanlang"
-    if (!form.viloyat)         e.viloyat  = "Viloyatni tanlang"
-    if (!form.telefon.trim())  e.telefon  = "Telefon raqamingizni kiriting"
+    if (!imtihon) e.imtihon = "Imtihon turini tanlang"
+    if (!form.fan) e.fan = "Fanni tanlang"
+    if (!form.telegram.trim()) e.telegram = "Telegram username kiriting"
+    if (!form.telefon.trim()) e.telefon = "Telefon raqamingizni kiriting"
     return e
   }
 
@@ -281,7 +282,7 @@ function ApplicationForm() {
           <h2>Ariza qabul qilindi!</h2>
           <p>24 soat ichida Telegram orqali siz bilan bog'lanamiz.</p>
           <a
-            href="https://t.me/parvozacademy"
+            href="https://t.me/PARVOZ_Online_Academy"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary btn-lg"
@@ -292,7 +293,7 @@ function ApplicationForm() {
             className="btn btn-secondary"
             onClick={() => {
               setSubmitted(false)
-              setForm({ ism: '', familiya: '', fan: '', viloyat: '', telefon: '' })
+              setForm({ ism: '', familiya: '', fan: '', telegram: '', telefon: '' })
               setImtihon('')
             }}
           >
@@ -373,16 +374,14 @@ function ApplicationForm() {
               {errors.fan && <span className="form-error">{errors.fan}</span>}
             </div>
             <div className="form-group">
-              <label className="form-label">Viloyat / Shahar *</label>
-              <select
-                className={`form-select${errors.viloyat ? ' err' : ''}`}
-                value={form.viloyat}
-                onChange={upd('viloyat')}
-              >
-                <option value="">Viloyatni tanlang</option>
-                {VILOYATLAR.map(v => <option key={v} value={v}>{v}</option>)}
-              </select>
-              {errors.viloyat && <span className="form-error">{errors.viloyat}</span>}
+              <label className="form-label">Telegram *</label>
+              <input
+                className={`form-input${errors.telegram ? ' err' : ''}`}
+                placeholder="@username"
+                value={form.telegram}
+                onChange={upd('telegram')}
+              />
+              {errors.telegram && <span className="form-error">{errors.telegram}</span>}
             </div>
           </div>
 
@@ -427,11 +426,11 @@ function Contact() {
           <h2 className="section-title">Bog'lanish</h2>
         </div>
         <div className="contact__grid">
-          <a href="https://t.me/parvozacademy" target="_blank" rel="noopener noreferrer" className="contact-card">
+          <a href="https://t.me/PARVOZ_Online_Academy" target="_blank" rel="noopener noreferrer" className="contact-card">
             <Send size={28} color="#26A5E4" />
             <div>
               <div className="contact-card__label">Telegram</div>
-              <div className="contact-card__val">@parvozacademy</div>
+              <div className="contact-card__val">@PARVOZ_Online_Academy</div>
             </div>
           </a>
           <a href="tel:+998901234567" className="contact-card">
@@ -483,7 +482,7 @@ function Landing() {
       </main>
       <Footer />
 
-      <a href="https://t.me/parvozacademy" className="fab" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+      <a href="https://t.me/PARVOZ_Online_Academy" className="fab" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
         <Send size={20} />
       </a>
 

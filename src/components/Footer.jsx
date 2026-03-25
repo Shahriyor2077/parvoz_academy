@@ -20,13 +20,13 @@ export default function Footer() {
   ]
 
   const socials = [
-    { Icon: Send, href: 'https://t.me/parvozacademy', label: 'Telegram' },
+    { Icon: Send, href: 'https://t.me/PARVOZ_Online_Academy', label: 'Telegram' },
     { Icon: AtSign, href: 'https://instagram.com/parvoz.academy', label: 'Instagram' },
   ]
 
   const contacts = [
     { Icon: Phone, label: tr.footer.phone, value: '+998 90 123 45 67', href: 'tel:+998901234567' },
-    { Icon: Send, label: 'Telegram', value: '@parvozacademy', href: 'https://t.me/parvozacademy' },
+    { Icon: Send, label: 'Telegram', value: '@PARVOZ_Online_Academy', href: 'https://t.me/PARVOZ_Online_Academy' },
     { Icon: MapPin, label: tr.contact.address, value: tr.footer.address, href: null },
   ]
 
