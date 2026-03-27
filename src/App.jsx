@@ -223,7 +223,7 @@ function Teachers() {
         </div>
         <div style={{ textAlign: 'center', marginTop: 32 }}>
           <a
-            href="https://t.me/PARVOZ_Online_Academy"
+            href="https://t.me/PARVOZONLINE"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
@@ -266,8 +266,32 @@ function ApplicationForm() {
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1200))
-    console.log('Ariza:', { ...form, imtihon })
+
+    try {
+      // Google Sheets ga yuborish
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzV4SwedeAGcj8POsZQ_Fl6Hi9D3aNM60go9QW75sCmfmO31rygV0uhTE4opdP3LBIUQ/exec';
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ism: form.ism,
+          familiya: form.familiya,
+          imtihon: imtihon === 'sertifikat' ? 'Milliy Sertifikat' : 'Attestatsiya',
+          fan: form.fan,
+          telegram: form.telegram,
+          telefon: form.telefon
+        })
+      });
+
+      console.log('Ariza Google Sheets ga yuborildi:', { ...form, imtihon })
+    } catch (error) {
+      console.error('Xatolik:', error)
+    }
+
     setLoading(false)
     setSubmitted(true)
   }
@@ -390,7 +414,7 @@ function ApplicationForm() {
             <input
               className={`form-input${errors.telefon ? ' err' : ''}`}
               type="tel"
-              placeholder="+998 90 123 45 67"
+              placeholder="+998 50 500 76 13"
               value={form.telefon}
               onChange={upd('telefon')}
             />
@@ -426,18 +450,18 @@ function Contact() {
           <h2 className="section-title">Bog'lanish</h2>
         </div>
         <div className="contact__grid">
-          <a href="https://t.me/PARVOZ_Online_Academy" target="_blank" rel="noopener noreferrer" className="contact-card">
+          <a href="https://t.me/PARVOZONLINE" target="_blank" rel="noopener noreferrer" className="contact-card">
             <Send size={28} color="#26A5E4" />
             <div>
               <div className="contact-card__label">Telegram</div>
-              <div className="contact-card__val">@PARVOZ_Online_Academy</div>
+              <div className="contact-card__val">@PARVOZONLINE</div>
             </div>
           </a>
-          <a href="tel:+998901234567" className="contact-card">
+          <a href="tel:+998505007613" className="contact-card">
             <Phone size={28} color="#10B981" />
             <div>
               <div className="contact-card__label">Telefon</div>
-              <div className="contact-card__val">+998 90 123 45 67</div>
+              <div className="contact-card__val">+998 50 500 76 13</div>
             </div>
           </a>
         </div>
@@ -482,7 +506,7 @@ function Landing() {
       </main>
       <Footer />
 
-      <a href="https://t.me/PARVOZ_Online_Academy" className="fab" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+      <a href="https://t.me/PARVOZONLINE" className="fab" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
         <Send size={20} />
       </a>
 

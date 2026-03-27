@@ -188,7 +188,7 @@ export default function CourseDetailPage() {
                 <Link to="/apply" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginBottom: 12 }}>
                   {tr.nav.apply} →
                 </Link>
-                <a href="https://t.me/PARVOZ_Online_Academy" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', gap: 8 }} target="_blank" rel="noopener noreferrer">
+                <a href="https://t.me/PARVOZONLINE" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', gap: 8 }} target="_blank" rel="noopener noreferrer">
                   <Send size={16} /> Telegram
                 </a>
                 <div className="sidebar-features">

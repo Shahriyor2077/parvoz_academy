@@ -31,8 +31,32 @@ export default function ApplicationPage() {
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1400))
-    console.log('Form submitted:', form)
+
+    try {
+      // Google Sheets ga yuborish
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzV4SwedeAGcj8POsZQ_Fl6Hi9D3aNM60go9QW75sCmfmO31rygV0uhTE4opdP3LBIUQ/exec';
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ism: form.firstName,
+          familiya: form.lastName,
+          imtihon: form.examType,
+          fan: form.subject,
+          telegram: form.phone1, // Telegram field yo'q, telefon ishlatiladi
+          telefon: form.phone1
+        })
+      });
+
+      console.log('Form submitted to Google Sheets:', form)
+    } catch (error) {
+      console.error('Error:', error)
+    }
+
     setLoading(false)
     setSubmitted(true)
   }
@@ -58,7 +82,7 @@ export default function ApplicationPage() {
             ))}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <a href="https://t.me/PARVOZ_Online_Academy" className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer" style={{ justifyContent: 'center' }}>
+            <a href="https://t.me/PARVOZONLINE" className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer" style={{ justifyContent: 'center' }}>
               <Send size={18} /> Telegram
             </a>
             <button className="btn btn-secondary" onClick={() => { setSubmitted(false); setForm({ firstName: '', lastName: '', subject: '', examType: '', region: '', workplace: '', phone1: '', phone2: '' }) }}>
@@ -138,7 +162,7 @@ export default function ApplicationPage() {
                 <div className="form-row">
                   <div className="form-group">
                     <label className="form-label"><Phone size={14} /> {tr.phone1} *</label>
-                    <input className={`form-input ${errors.phone1 ? 'input--error' : ''}`} type="tel" placeholder="+998 90 123 45 67" value={form.phone1} onChange={update('phone1')} />
+                    <input className={`form-input ${errors.phone1 ? 'input--error' : ''}`} type="tel" placeholder="+998 50 500 76 13" value={form.phone1} onChange={update('phone1')} />
                     {errors.phone1 && <span className="form-error">{errors.phone1}</span>}
                   </div>
                   <div className="form-group">

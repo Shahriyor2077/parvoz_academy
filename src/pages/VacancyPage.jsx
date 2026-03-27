@@ -18,10 +18,10 @@ export default function VacancyPage() {
 
   const validate = () => {
     const e = {}
-    if (!form.fish.trim())     e.fish     = "FISh ni kiriting"
-    if (!form.fan.trim())      e.fan      = "Fanini kiriting"
-    if (!form.malumot)         e.malumot  = "Ma'lumot darajasini tanlang"
-    if (!form.telefon.trim())  e.telefon  = "Telefon raqamini kiriting"
+    if (!form.fish.trim()) e.fish = "FISh ni kiriting"
+    if (!form.fan.trim()) e.fan = "Fanini kiriting"
+    if (!form.malumot) e.malumot = "Ma'lumot darajasini tanlang"
+    if (!form.telefon.trim()) e.telefon = "Telefon raqamini kiriting"
     if (!form.telegram.trim()) e.telegram = "Telegram username kiriting"
     return e
   }
@@ -144,7 +144,7 @@ export default function VacancyPage() {
                   <input
                     className={`form-input${errors.telefon ? ' err' : ''}`}
                     type="tel"
-                    placeholder="+998 90 123 45 67"
+                    placeholder="+998 50 500 76 13"
                     value={form.telefon}
                     onChange={upd('telefon')}
                   />
