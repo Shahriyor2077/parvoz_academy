@@ -540,6 +540,12 @@ function Landing() {
         .hero__stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
         .hero__stat-num { font-family: var(--font-heading); font-size: 30px; font-weight: 800; color: var(--primary); }
         .hero__stat-label { font-size: 13px; color: var(--text-muted); }
+        @media (max-width: 640px) { 
+          .hero { padding: 100px 0 60px; }
+          .hero__desc { font-size: 16px; }
+          .hero__stats { gap: 24px; }
+          .hero__stat-num { font-size: 24px; }
+        }
 
         /* ── Section common ── */
         .section-header { text-align: center; margin-bottom: 48px; }
@@ -582,6 +588,10 @@ function Landing() {
         .imtihon-types { display: flex; gap: 10px; }
         .imtihon-btn { flex: 1; padding: 13px; border: 2px solid var(--border); border-radius: var(--radius-md); background: white; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text-secondary); transition: var(--transition); }
         .imtihon-btn.active { border-color: var(--primary); background: rgba(108,60,225,0.06); color: var(--primary); }
+        @media (max-width: 480px) { 
+          .imtihon-types { flex-direction: column; }
+          .imtihon-btn { padding: 16px; }
+        }
         .err { border-color: #EF4444 !important; }
         .form-note { font-size: 12px; color: var(--text-muted); text-align: center; }
         .spin { animation: spin 0.7s linear infinite; }
@@ -591,6 +601,10 @@ function Landing() {
         .success-box { max-width: 480px; margin: 0 auto; background: white; border-radius: var(--radius-xl); padding: 52px 40px; text-align: center; box-shadow: var(--shadow-xl); display: flex; flex-direction: column; align-items: center; gap: 12px; }
         .success-box h2 { font-family: var(--font-heading); font-size: 24px; color: var(--text); }
         .success-box p { font-size: 15px; color: var(--text-secondary); }
+        @media (max-width: 480px) { 
+          .success-box { padding: 36px 24px; }
+          .success-box h2 { font-size: 20px; }
+        }
 
         /* ── Contact ── */
         .contact__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 680px; margin: 0 auto; }
@@ -609,6 +623,9 @@ function Landing() {
         /* ── FAB ── */
         .fab { position: fixed; bottom: 28px; right: 28px; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #26A5E4, #0088CC); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 20px rgba(38,165,228,0.45); z-index: 99; transition: var(--transition); }
         .fab:hover { transform: scale(1.1); }
+        @media (max-width: 640px) { 
+          .fab { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+        }
       `}</style>
     </>
   )
