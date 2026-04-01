@@ -306,7 +306,7 @@ function ApplicationForm() {
           <h2>Ariza qabul qilindi!</h2>
           <p>24 soat ichida Telegram orqali siz bilan bog'lanamiz.</p>
           <a
-            href="https://t.me/PARVOZONLINE"
+            href="https://t.me/parvozacademy"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary btn-lg"
@@ -450,11 +450,11 @@ function Contact() {
           <h2 className="section-title">Bog'lanish</h2>
         </div>
         <div className="contact__grid">
-          <a href="https://t.me/PARVOZONLINE" target="_blank" rel="noopener noreferrer" className="contact-card">
+          <a href="https://t.me/parvozacademy" target="_blank" rel="noopener noreferrer" className="contact-card">
             <Send size={28} color="#26A5E4" />
             <div>
               <div className="contact-card__label">Telegram</div>
-              <div className="contact-card__val">@PARVOZONLINE</div>
+              <div className="contact-card__val">@parvozacademy</div>
             </div>
           </a>
           <a href="tel:+998505007613" className="contact-card">
@@ -506,7 +506,7 @@ function Landing() {
       </main>
       <Footer />
 
-      <a href="https://t.me/PARVOZONLINE" className="fab" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+      <a href="https://t.me/parvozacademy" className="fab" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
         <Send size={20} />
       </a>
 

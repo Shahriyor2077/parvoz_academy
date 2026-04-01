@@ -93,7 +93,7 @@ export default function FAQPage() {
           <h2 style={{ color: 'white', fontSize: 'clamp(24px,3.5vw,36px)', marginBottom: 12 }}>{ctaTitle}</h2>
           <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 17, marginBottom: 32, maxWidth: 440, margin: '0 auto 32px' }}>{ctaDesc}</p>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="https://t.me/PARVOZONLINE" className="btn btn-white btn-lg" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/parvozacademy" className="btn btn-white btn-lg" target="_blank" rel="noopener noreferrer">
               <Send size={16} /> Telegram
             </a>
             <Link to="/apply" className="btn btn-lg" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', border: '1.5px solid rgba(255,255,255,0.3)', borderRadius: 'var(--radius-full)' }}>

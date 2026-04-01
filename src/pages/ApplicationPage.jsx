@@ -82,7 +82,7 @@ export default function ApplicationPage() {
             ))}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <a href="https://t.me/PARVOZONLINE" className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer" style={{ justifyContent: 'center' }}>
+            <a href="https://t.me/parvozacademy" className="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer" style={{ justifyContent: 'center' }}>
               <Send size={18} /> Telegram
             </a>
             <button className="btn btn-secondary" onClick={() => { setSubmitted(false); setForm({ firstName: '', lastName: '', subject: '', examType: '', region: '', workplace: '', phone1: '', phone2: '' }) }}>
