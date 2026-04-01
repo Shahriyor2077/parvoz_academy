@@ -306,7 +306,7 @@ function ApplicationForm() {
           <h2>Ariza qabul qilindi!</h2>
           <p>24 soat ichida Telegram orqali siz bilan bog'lanamiz.</p>
           <a
-            href="https://t.me/PARVOZ_Online_Academy"
+            href="https://t.me/PARVOZONLINE"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary btn-lg"
