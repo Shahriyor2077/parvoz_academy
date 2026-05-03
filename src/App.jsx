@@ -21,11 +21,6 @@ const ATTESTATSIYA_FANLAR = [
   "Boshlang'ich ta'lim", "Psixologiya", "Boshqa fanlar",
 ]
 
-const VILOYATLAR = [
-  "Toshkent shahri", "Toshkent viloyati", "Samarqand", "Buxoro",
-  "Farg'ona", "Andijon", "Namangan", "Qashqadaryo", "Surxondaryo",
-  "Jizzax", "Sirdaryo", "Xorazm", "Navoiy", "Qoraqalpog'iston",
-]
 
 const FEATURES = [
   { Icon: Award, title: "100% Natija kafolati", desc: "Natija bo'lmasa — to'liq pul qaytariladi" },
@@ -268,26 +263,19 @@ function ApplicationForm() {
     setLoading(true)
 
     try {
-      // Google Sheets ga yuborish
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzV4SwedeAGcj8POsZQ_Fl6Hi9D3aNM60go9QW75sCmfmO31rygV0uhTE4opdP3LBIUQ/exec';
+      const TELEGRAM_TOKEN = '8335951068:AAGOe5QSnA8ZeTGzWcqEeqnlTXekRcTendg';
+      const TELEGRAM_CHAT_ID = '5990577564';
 
-      await fetch(GOOGLE_SCRIPT_URL, {
+      const imtihonNomi = imtihon === 'sertifikat' ? 'Milliy Sertifikat' : 'Attestatsiya';
+      const message = `🎓 <b>Yangi ariza!</b>\n\n👤 <b>Ism:</b> ${form.ism} ${form.familiya}\n📝 <b>Imtihon:</b> ${imtihonNomi}\n📚 <b>Fan:</b> ${form.fan}\n✈️ <b>Telegram:</b> ${form.telegram}\n📞 <b>Telefon:</b> ${form.telefon}`;
+
+      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
         method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ism: form.ism,
-          familiya: form.familiya,
-          imtihon: imtihon === 'sertifikat' ? 'Milliy Sertifikat' : 'Attestatsiya',
-          fan: form.fan,
-          telegram: form.telegram,
-          telefon: form.telefon
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: 'HTML' })
       });
-
-      console.log('Ariza Google Sheets ga yuborildi:', { ...form, imtihon })
+      const data = await res.json();
+      if (!data.ok) console.error('Telegram xato:', data.description);
     } catch (error) {
       console.error('Xatolik:', error)
     }

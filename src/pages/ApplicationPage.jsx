@@ -33,26 +33,22 @@ export default function ApplicationPage() {
     setLoading(true)
 
     try {
-      // Google Sheets ga yuborish
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzV4SwedeAGcj8POsZQ_Fl6Hi9D3aNM60go9QW75sCmfmO31rygV0uhTE4opdP3LBIUQ/exec';
+      const TELEGRAM_TOKEN = '8335951068:AAGOe5QSnA8ZeTGzWcqEeqnlTXekRcTendg';
+      const TELEGRAM_CHAT_ID = '5990577564';
 
-      await fetch(GOOGLE_SCRIPT_URL, {
+      const message = `🎓 <b>Yangi ariza!</b>\n\n👤 <b>Ism:</b> ${form.firstName} ${form.lastName}\n📚 <b>Fan:</b> ${form.subject}\n📝 <b>Imtihon:</b> ${form.examType}\n📍 <b>Viloyat:</b> ${form.region}\n🏢 <b>Ish joyi:</b> ${form.workplace || '—'}\n📞 <b>Telefon 1:</b> ${form.phone1}\n📞 <b>Telefon 2:</b> ${form.phone2 || '—'}`;
+
+      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
         method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ism: form.firstName,
-          familiya: form.lastName,
-          imtihon: form.examType,
-          fan: form.subject,
-          telegram: form.phone1, // Telegram field yo'q, telefon ishlatiladi
-          telefon: form.phone1
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+          parse_mode: 'HTML'
         })
       });
-
-      console.log('Form submitted to Google Sheets:', form)
+      const data = await res.json();
+      if (!data.ok) console.error('Telegram xato:', data.description);
     } catch (error) {
       console.error('Error:', error)
     }

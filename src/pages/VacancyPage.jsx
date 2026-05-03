@@ -32,8 +32,28 @@ export default function VacancyPage() {
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1200))
-    console.log('Vakansiya:', form)
+
+    try {
+      const TELEGRAM_TOKEN = '8335951068:AAGOe5QSnA8ZeTGzWcqEeqnlTXekRcTendg';
+      const TELEGRAM_CHAT_ID = '5990577564';
+
+      const message = `👨‍🏫 <b>Yangi o'qituvchi arizasi!</b>\n\n👤 <b>FISh:</b> ${form.fish}\n📚 <b>Fani:</b> ${form.fan}\n🎓 <b>Ma'lumoti:</b> ${form.malumot}\n📋 <b>Sertifikat:</b> ${form.sertifikat || '—'}\n📞 <b>Telefon:</b> ${form.telefon}\n✈️ <b>Telegram:</b> ${form.telegram}`;
+
+      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+          parse_mode: 'HTML'
+        })
+      });
+      const data = await res.json();
+      if (!data.ok) console.error('Telegram xato:', data.description);
+    } catch (error) {
+      console.error('Error:', error)
+    }
+
     setLoading(false)
     setSubmitted(true)
   }
