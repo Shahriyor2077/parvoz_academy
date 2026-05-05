@@ -5,6 +5,7 @@ import {
   User, BookOpen, FileText, Briefcase, MessageCircle,
   Loader2, Lock, ArrowLeft,
 } from 'lucide-react'
+import SEO from '../components/SEO.jsx'
 
 const MA_LUMOT_DARAJALARI = ["Bakalavr", "Magistr", "Oliy ma'lumot (tugallanmagan)", "O'rta maxsus"]
 const SERTIFIKAT_DARAJALARI = ["1-toifa", "2-toifa", "Oliy toifa", "Toifasiz"]
@@ -35,7 +36,7 @@ export default function VacancyPage() {
 
     try {
       const TELEGRAM_TOKEN = '8335951068:AAGOe5QSnA8ZeTGzWcqEeqnlTXekRcTendg';
-      const TELEGRAM_CHAT_ID = '5990577564';
+      const TELEGRAM_CHAT_ID = '5952496756';
 
       const message = `👨‍🏫 <b>Yangi o'qituvchi arizasi!</b>\n\n👤 <b>FISh:</b> ${form.fish}\n📚 <b>Fani:</b> ${form.fan}\n🎓 <b>Ma'lumoti:</b> ${form.malumot}\n📋 <b>Sertifikat:</b> ${form.sertifikat || '—'}\n📞 <b>Telefon:</b> ${form.telefon}\n✈️ <b>Telegram:</b> ${form.telegram}`;
 
@@ -62,6 +63,12 @@ export default function VacancyPage() {
 
   return (
     <main className="vac-page">
+      <SEO
+        title="Vakansiya - O'qituvchi bo'lish | PARVOZ Online Academy"
+        description="PARVOZ Online Academy jamoasiga qo'shiling! Tajribali o'qituvchilarni asosiy va yordamchi o'qituvchi lavozimlariga qabul qilamiz. Milliy sertifikat va attestatsiya fanlaridan dars bering."
+        keywords="o'qituvchi vakansiyasi, online o'qituvchi, PARVOZ ish, o'qituvchi ish o'rni, milliy sertifikat o'qituvchi, attestatsiya o'qituvchi"
+        url="https://parvoz-academy.uz/vakansiya"
+      />
       {/* Topbar */}
       <div className="vac-topbar">
         <div className="container vac-topbar__inner">

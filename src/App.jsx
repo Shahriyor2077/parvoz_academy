@@ -5,6 +5,7 @@ import {
   Phone, Clock, Users, Award, Gift, Loader2, Lock,
 } from 'lucide-react'
 import VacancyPage from './pages/VacancyPage.jsx'
+import SEO from './components/SEO.jsx'
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
@@ -264,7 +265,7 @@ function ApplicationForm() {
 
     try {
       const TELEGRAM_TOKEN = '8335951068:AAGOe5QSnA8ZeTGzWcqEeqnlTXekRcTendg';
-      const TELEGRAM_CHAT_ID = '5990577564';
+      const TELEGRAM_CHAT_ID = '5952496756';
 
       const imtihonNomi = imtihon === 'sertifikat' ? 'Milliy Sertifikat' : 'Attestatsiya';
       const message = `🎓 <b>Yangi ariza!</b>\n\n👤 <b>Ism:</b> ${form.ism} ${form.familiya}\n📝 <b>Imtihon:</b> ${imtihonNomi}\n📚 <b>Fan:</b> ${form.fan}\n✈️ <b>Telegram:</b> ${form.telegram}\n📞 <b>Telefon:</b> ${form.telefon}`;
@@ -483,6 +484,7 @@ function Footer() {
 function Landing() {
   return (
     <>
+      <SEO />
       <Navbar />
       <main>
         <Hero />
